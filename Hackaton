@@ -1,0 +1,15 @@
+from openai import OpenAi
+
+client = OpenAi("INSER_KEY_HERE")
+
+query = "something"
+
+response = client.responses.create(
+    model="gpt-5-mini",
+    messages=[
+        {"role": "assistant", "content": "Only list the names of the top 10 recommended games and a link to the game in steam shop",
+         "role": "assistant", "content": "The format should be [[game1_name, game1_link], [game2_name, game2_link]...[game10_name, game10_link]]",
+         "role": "message", "content": query}
+
+    ]
+)
