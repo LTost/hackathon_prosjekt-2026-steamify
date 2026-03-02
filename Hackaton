@@ -9,8 +9,8 @@ def ask_chat(owned, recent):
     response = client.responses.create(
         model="gpt-5-mini",
         messages=[
-            {"role": "assistant", "content": "Only list the names of the top 10 recommended games and a link to the game in steam shop",
-            "role": "assistant", "content": "The format should be [[game1_name, game1_link], [game2_name, game2_link]...[game10_name, game10_link]]",
+            {"role": "assistant", "content": "Only list the names of the top 10 recommended games, prices and a link to the game in steam shop based on the data provided, also consider the games public rating on  steam",
+            "role": "assistant", "content": "The format should be [[game1_name, game1_price, game1_link], [game2_name, game2_price, game2_link]...[game10_name, game10_price, game10_link]]",
             "role": "message", "content": query}
 
         ]
@@ -19,7 +19,7 @@ def ask_chat(owned, recent):
     return response[message][0][something]
 
 def get_games(username):
-    steam = Steam("INSERT_KEY_HERE")
+    steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
 
     user_details = steam.users.search_user(username)
     user_id = user_details["player"]["steam_id"]
@@ -29,4 +29,5 @@ def get_games(username):
 
     return owned_games, recent_games
 
-
+### vi bør ha med pris og kanskje sorterings algoritme basert på rating og pris.
+#### steam Key: 511BA295CDA8349CA246EDD6AD5ACA27
