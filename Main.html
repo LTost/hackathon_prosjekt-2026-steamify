@@ -118,7 +118,7 @@
 
        
 
-        .btn-general:hover {
+        .btn1-general:hover {
 
             background-color: #00a8cc;
 
@@ -128,28 +128,31 @@
 
        
 
-        .btn-specific {
+        .btn2-general:hover {
 
             background-color: #ff6b6b;
 
-            color: #fff;
+            transform: scale(1.05);
 
         }
 
-        .moved-text {
-            text-align: bottom;
-        
-         
 
-        .contain
        </style>
     <Div class="container">
-        <h1>Game Recommender</h1>
-        
+        <h1>Steam Game Recommendations</h1>
+
+        <p>Find your next favorite game</p>
+
+        <div class="button-group">
+
+            <button class="btn1-general" onclick="goToGeneral()">General Recommendations</button>
+
+            <button class="btn2-general" onclick="goToSpecific()">Specific Recommendations</button>
+
+        </div>        
 
     </Div>
-    <p class="moved-text">Discover your next favorite game with AI recommendations!</p>
-    <div class="central-line"></div>
+
 </body>
 </html>
 
