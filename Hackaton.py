@@ -22,7 +22,7 @@ def get_games(username):
     steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
 
     user_details = steam.users.search_user(username)
-    user_id = user_details["player"]["steam_id"]
+    user_id = user_details["player"]["steamid"]
 
     owned_games = steam.users.get_owned_games(user_id)
     recent_games = steam.users.get_user_recently_played_games(user_id)
