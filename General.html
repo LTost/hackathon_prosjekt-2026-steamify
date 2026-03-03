@@ -7,13 +7,61 @@
     <link rel="stylesheet" href="https://pyscript.net/releases/2026.3.1/core.css" />
     <script type="module" src="https://pyscript.net/releases/2026.3.1/core.js"></script>
 
+    <script>
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const cookies = document.cookie.split(';');
+            for(let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if(cookie.indexOf(nameEQ) === 0) {
+                    return decodeURIComponent(cookie.substring(nameEQ.length));
+                }
+            }
+            return null;
+        }
+        if(!getCookie("steamUsername")) {
+            window.location.href = "Username input.html";
+        }
+    </script>
 
 </head>
 <body>
-    <py-script src="./Hackaton.py" config="./pyscript.json">
+    <py-script src="./Hackaton.py" config="./pyscript.json"></py-script>
+    
+    <style>
 
-    </py-script>
+        body {
 
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(150deg, #171A21 0%, #020d29e1 100%);
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+
+        }
+
+        .container {
+
+            text-align: center;
+
+            background: rgba(0, 0, 0, 0.3);
+
+            padding: 50px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+        }
+
+    </style>
 
 </body>
 </html>

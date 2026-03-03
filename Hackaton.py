@@ -31,7 +31,7 @@ def get_games(username):
 
 ### vi bør ha med pris og kanskje sorterings algoritme basert på rating og pris.
 #### steam Key: 511BA295CDA8349CA246EDD6AD5ACA27
-### openai key: INSER_KEY_HERE
+### openai key: INSERT_KEY_HERE
 ### all pip insalls required: pip install steam-web-api / pip install python-steam-api, pip install openai
 
 print("hello world")

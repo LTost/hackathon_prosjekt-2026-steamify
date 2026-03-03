@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steamify Username</title>
+</head>
+<body>
+    <Style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family: "arial", sans-serif;
+
+            background: linear-gradient(150deg, #171A21 0%, #020d29e1 100%);
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+
+        }
+
+        .container {
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.05);
+
+            backdrop-filter: blur(15px);
+
+            padding: 50px 40px;
+
+            border-radius: 16px;
+
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+            width: 90%;
+
+            max-width: 420px;
+
+            animation: fadeIn 0.8s ease;
+    
+        }
+
+       h1 {
+    margin-bottom: 25px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+}
+
+input {
+
+    width: 100%;
+
+    padding: 12px 15px;
+
+    font-size: 1rem;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.08);
+
+    color: #fff;
+
+    outline: none;
+
+    transition: 0.3s ease;
+
+}
+
+input::placeholder {
+
+    color: rgba(255,255,255,0.6);
+
+}
+
+input:focus {
+
+    border-color: #2fe900;
+
+    box-shadow: 0 0 10px rgba(47, 233, 0, 0.5);
+
+}
+
+.btn {
+
+    margin-top: 20px;
+
+    width: 100%;
+
+    padding: 12px;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    color: #000;
+
+    background: linear-gradient(90deg, #2fe900, #00c853);
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(47, 233, 0, 0.4);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Enter Your Steam Username</h1>
+    <input type="text" id="usernameInput" placeholder="Steam Username">
+    <button class="btn" onclick="submitUsername()">Submit</button>
+</div>
+
+<script>
+function submitUsername() {
+    const username = document.getElementById("usernameInput").value.trim();
+    
+    if(username === "") {
+        alert("Please enter a username!");
+        return;
+    }
+
+    const date = new Date();
+    date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = "steamUsername=" + encodeURIComponent(username) + ";" + expires + ";path=/";
+    
+    window.location.href = "Main.html";
+}
+</script>
+</body>
+</html>
