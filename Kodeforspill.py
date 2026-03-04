@@ -5,9 +5,9 @@ import json
 game_dict = {}
 steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
 
-username = input("Whats your username: ")
+userURL = input("Whats your Steam Profile URL: ")
 
-user_details = steam.users.search_user(username)
+user_details = steam.users.search_user(userURL)
 
 
 if isinstance(user_details, str):
@@ -15,7 +15,7 @@ if isinstance(user_details, str):
 
 
 if "player" not in user_details:
-    raise ValueError(f"User '{username}' not found or API error!")
+    raise ValueError(f"User '{userURL}' not found or API error!")
 
 user_id = user_details["player"]["steamid"]
 
