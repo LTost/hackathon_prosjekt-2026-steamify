@@ -187,13 +187,13 @@ function submitUsername() {
     const expires = "expires=" + date.toUTCString();
     document.cookie = "steamUsername=" + encodeURIComponent(username) + ";" + expires + ";path=/";
     
-    window.location.href = "Main.html";
+    window.location.href = "Main";
 }
 </script>
 
 <div style="position: fixed; bottom: 1%; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
-    <div class="btnidk" onclick="window.location.href='Howto.html'">How to Change Your Steam URL</div>
-    <div class="btnidk" onclick="window.location.href='Main.html'">Go to Main Page</div>
+    <div class="btnidk" onclick="window.location.href='How to'">How to Change Your Steam URL</div>
+    <div class="btnidk" onclick="window.location.href='Main'">Go to Main Page</div>
 </div>
 </body>
 </html>

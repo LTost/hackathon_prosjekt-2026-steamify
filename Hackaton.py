@@ -16,13 +16,13 @@ def ask_chat(owned, recent):
         ]
     )
 
-    return response[message][0][something]
+    return response[choices][0][message][content]
 
 def get_games(username):
     steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
 
     user_details = steam.users.search_user(username)
-    user_id = user_details["player"]["steamid"]
+    user_id = user_details["player"]["steam_id"]
 
     owned_games = steam.users.get_owned_games(user_id)
     recent_games = steam.users.get_user_recently_played_games(user_id)
@@ -31,7 +31,7 @@ def get_games(username):
 
 ### vi bør ha med pris og kanskje sorterings algoritme basert på rating og pris.
 #### steam Key: 511BA295CDA8349CA246EDD6AD5ACA27
-### openai key: INSERT_KEY_HERE
-### all pip insalls required: pip install steam-web-api / pip install python-steam-api, pip install openai
+### openai key: INSER_KEY_HERE
+### all pip insalls required: pip install python-steam-api, pip install openai
 
 print("hello world")
