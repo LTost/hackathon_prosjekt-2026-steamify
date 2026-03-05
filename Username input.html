@@ -131,14 +131,45 @@ input:focus {
     transform: scale(0.98);
 }
 
+.btnidk {
+    margin-top: 20px;
+
+    width: auto%;
+
+    padding: 12px;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    color: #000;
+
+    background-color: #e6b800;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+}
+
+.btnidk:hover {
+    background-color: #a08000;
+    box-shadow: 0 8px 20px rgba(230, 184, 0, 0.4);
+    transform: scale(1.07);
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <h1>Enter Your Steam Username</h1>
-    <input type="text" id="usernameInput" placeholder="Steam Username">
+    <h1>Enter Your Steam URL</h1>
+    <input type="text" id="usernameInput" placeholder="Steam URL">
     <button class="btn" onclick="submitUsername()">Submit</button>
 </div>
 
@@ -147,7 +178,7 @@ function submitUsername() {
     const username = document.getElementById("usernameInput").value.trim();
     
     if(username === "") {
-        alert("Please enter a username!");
+        alert("Please enter a Urly!");
         return;
     }
 
@@ -159,5 +190,10 @@ function submitUsername() {
     window.location.href = "Main.html";
 }
 </script>
+
+<div style="position: fixed; bottom: 1%; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
+    <div class="btnidk" onclick="window.location.href='Howto.html'">How to Change Your Steam URL</div>
+    <div class="btnidk" onclick="window.location.href='Main.html'">Go to Main Page</div>
+</div>
 </body>
 </html>
