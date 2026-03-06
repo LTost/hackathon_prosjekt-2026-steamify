@@ -32,6 +32,7 @@ def get_games(username):
     try:
         for game in owned_games["games"]:
             game_info.append({game["name"]: [game["playtime_forever"], game["rtime_last_played"]]})
+
     except KeyError:
         return "It seems you don't have any games installed. Please try some games to see what you like before we can give any recommendations"
     
