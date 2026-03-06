@@ -1,6 +1,5 @@
-import html
-
 from flask import Flask, render_template, redirect, request
+import html
 
 app = Flask(__name__)
 
@@ -35,7 +34,7 @@ def recommend_games():
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     recommendations = ask_chat(games)
-    recommendations = html.unescape(recommendations)
+    recommendations = h tml.unescape(recommendations)
 
     return render_template("Recommended games.html", games=recommendations)
 
