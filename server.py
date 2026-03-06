@@ -1,23 +1,19 @@
 from flask import Flask, render_template, redirect, request
-
 app = Flask(__name__)
 
 @app.route("/Main")
-def home():
-    return render_template("Main.html")
 
-@app.route("/Username-input")
+@@ -10,9 +9,16 @@ def home():
 def login():
     return render_template("Username input.html")
 
 @app.route("/General-Recommendations")
 def general():
-     return render_template("General.html")
-
+    return render_template("General.html")
 @app.route("/Specific-Recommendations")
 def specific():
 
-@@ -32,9 +26,19 @@
+@@ -26,16 +32,6 @@ def howto():
 def root():
     return redirect("/Main")
 
