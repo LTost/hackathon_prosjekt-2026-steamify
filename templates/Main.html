@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Recommender</title>
+    
+    <script>
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const cookies = document.cookie.split(';');
+            for(let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if(cookie.indexOf(nameEQ) === 0) {
+                    return decodeURIComponent(cookie.substring(nameEQ.length));
+                }
+            }
+            return null;
+        }
+        function clearUsername() {
+            document.cookie = "steamUsername=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            window.location.href = "Username-input";
+        }
+        if(!getCookie("steamUsername")) {
+            window.location.href = "Username-input";
+        }
+    </script>
+</head>
+<body>
+        <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+        }
+
+       body {
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(150deg, #171A21 0%, #020d29e1 100%);
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+        .container {
+
+            text-align: center;
+
+            background: rgba(0, 0, 0, 0.3);
+
+            padding: 50px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+        }
+
+       
+
+        h1 {
+
+            color: #fff;
+
+            margin-bottom: 10px;
+
+            font-size: 2.5em;
+
+        }
+
+       
+
+        p {
+
+            color: #ddd;
+
+            margin-bottom: 40px;
+
+            font-size: 1.1em;
+
+        }
+
+       
+
+        .button-group {
+
+            display: flex;
+
+            gap: 20px;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+        }
+
+       
+
+        button {
+
+            padding: 15px 40px;
+
+            font-size: 1.1em;
+
+            border: none;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            font-weight: bold;
+
+        }
+
+       
+
+        .btn1-general {
+
+            background-color: #00a8cc;
+
+            color: #000;
+
+
+        }
+
+        .btn2-general {
+
+            background-color: #fa0000;
+
+            color: #000;
+
+        }
+
+
+       
+
+        .btn1-general:hover {
+
+            background-color: #006075;
+
+            transform: scale(1.07);
+
+            box-shadow: 0 0 20px rgba(0, 168, 204, 0.8);
+            
+
+        }
+
+       
+
+        .btn2-general:hover {
+
+            background-color: #7a0000;
+
+            transform: scale(1.07);
+
+            box-shadow: 0 0 20px rgba(250,0,0,0.8);
+        }
+
+        @keyframes btn2Glow {
+            from { box-shadow: 0 0 10px rgba(250,0,0,0.6); }
+            to { box-shadow: 0 0 30px rgba(250,0,0,1); }
+        }
+
+
+
+        .btn3-general {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffcc00;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255,204,0,0.7);
+        }
+        .btn3-general:hover {
+            background-color: #e6b800;
+            box-shadow: 0 0 20px rgba(255,204,0,1);
+        }
+
+       </style>
+    <div class="container">
+        <h1>Steam Game Recommendations</h1>
+
+        <p>Find your next favorite game</p>
+
+        <div class="button-group">
+
+            <button class="btn1-general" onclick="document.location='General-Recommendations'">General Recommendations</button>
+
+            <button class="btn2-general" onclick="document.location='Specific-Recommendations'">Specific Recommendations</button>
+
+            <button class="btn3-general" onclick="clearUsername()">Change URL</button>
+
+        </div>        
+
+    </div>
+
+</body>
+</html>
+
