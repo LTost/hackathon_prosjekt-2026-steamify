@@ -34,7 +34,7 @@ def recommend_games():
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     recommendations = ask_chat(games)
-    recommendations = html.unescape(recommendations)
+    #recommendations = html.unescape(recommendations)
 
     return render_template("Recommended games.html", games=recommendations)
 
