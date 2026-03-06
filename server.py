@@ -6,7 +6,7 @@ app = Flask(__name__)
 def home():
     return render_template("Main.html")
 
-@app.route("/Login")
+@app.route("/Username-input")
 def login():
     return render_template("Username input.html")
 
@@ -17,6 +17,10 @@ def general():
 @app.route("/Specific-Recommendations")
 def specific():
     return render_template("Specific.html")
+
+@app.route("/How-to")
+def howto():
+    return render_template("Howto.html")
 
 @app.route("/")
 def root():
@@ -33,5 +37,5 @@ def recommend_games():
     return render_template("Recommended games.html", games=recommendations)
 
 @app.errorhandler(404)
-def page_not_found(_):
+def page_not_found(e):
     return render_template("404.html"), 404
