@@ -3,8 +3,8 @@ from steam_web_api import Steam
 
 def ask_chat(games):
     client = OpenAI("INSER_KEY_HERE")
-
-    query = "something"
+    sorted_game_lib = dict(sorted(games.items(), key=lambda item: item[1]))
+    query = "Use this steam data in the form of a python dict"+str(sorted_game_lib)   
 
     response = client.responses.create(
         model="gpt-5-mini",
@@ -30,6 +30,7 @@ def get_games(username):
     try:
         for game in owned_games["games"]:
             game_info.append({game["name"]: [game["playtime_forever"], game["rtime_last_played"]]})
+
     except KeyError:
         return "It seems you don't have any games installed. Please try some games to see what you like before we can give any recommendations"
     
