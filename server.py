@@ -1,19 +1,24 @@
 from flask import Flask, render_template, redirect, request
+
 app = Flask(__name__)
 
 @app.route("/Main")
+def home():
+    return render_template("Main.html")
 
-@@ -10,9 +9,16 @@ def home():
+@app.route("/Login")
 def login():
     return render_template("Username input.html")
 
 @app.route("/General-Recommendations")
 def general():
     return render_template("General.html")
+
 @app.route("/Specific-Recommendations")
 def specific():
+    return render_template("Specific.html")
 
-@@ -26,16 +32,6 @@ def howto():
+@app.route("/")
 def root():
     return redirect("/Main")
 
@@ -28,8 +33,5 @@ def recommend_games():
     return render_template("Recommended games.html", games=recommendations)
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(_):
     return render_template("404.html"), 404
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
