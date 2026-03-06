@@ -32,9 +32,9 @@
  
             background-color: #171A21;
  
-            height: 190px;
+            min-height: 190px;
  
-            padding: 200px;
+            padding: 40px;
  
             border-radius: 10px;
  
@@ -106,11 +106,19 @@
  
         }
 
-    </style>    
-    <H1 style="position: absolute; top: 10px; font-style: italic; color: aliceblue;">General Recommendations</H1>
+    </style>
+    <style>
+<div class="container" id="results" style="text-align: center; color: white; padding: 20px;">Recommended Games: Game 1, Game 2, Game 3</div>
+            position: absolute;
+            top: 10px;
+            font-style: italic;
+            color: aliceblue;
+        }
+    </style>
+    <h1 class="recommendations-title">General Recommendations</h1>
 <div class="container" id="results" style="text-align: center; color: white; padding: 20px;">Recommended Games: {{ games }}</div>
 <div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
-    <a href="main.html" class="mainbtn">Main Button</a>
+    <a href="main.html" class="mainbtn">Back to Main Page</a>
 </div>
 </body>
 </html>
