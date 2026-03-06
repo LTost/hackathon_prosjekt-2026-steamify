@@ -7,14 +7,14 @@ def ask_chat(games):
         base_url="https://hackathonlite-production.up.railway.app"
     )
 
-    query = "something"
+    query = "Use this list of games to give 10 games that are similar. This list is a list of dictionaries, where the key is the name of the game, the first value is playtime forever and the second is rtime last played. Think about playtime and rtime last played when giving recommendations about other games. Here is the list: {games}"
 
-    response = client.responses.create(
-        model="gemini-3-flash",
+    response = client.chat.completions.create(
+        model="gemini-3-flash-preview",
         messages=[
             {"role": "assistant", "content": "Only list the names of the top 10 recommended games, prices and a link to the game in steam shop based on the data provided, also consider the games public rating on steam",
             "role": "assistant", "content": "The format should be [[game1_name, game1_price, game1_link], [game2_name, game2_price, game2_link]...[game10_name, game10_price, game10_link]]",
-            "role": "message", "content": query}
+            "role": "user", "content": query}
         ]
     )
 
