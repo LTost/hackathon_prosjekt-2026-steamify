@@ -17,14 +17,34 @@
             }
             return null;
         }
+
         if(!getCookie("steamUsername")) {
             window.location.href = "Username-input";
         }
-    </script>
+
+        async function getRecommendations() {
+
+        let resultsDiv = document.getElementById("results");
+        resultsDiv.innerHTML = "Loading recommendations...";
+
+        const response = await fetch("/general");
+        const data = await response.json();
+
+         resultsDiv.innerHTML = "";
+
+        data.forEach(game => {
+          resultsDiv.innerHTML += "<p>" + game + "</p>";
+        });
+        }   
+        
+        </script>
+
+
+        
+    
 
 </head>
 <body>
-    <py-script src="./Hackaton.py" config="./pyscript.json"></py-script>
     
     <style>
 
@@ -126,10 +146,10 @@
             }
     </style>    
     <H1 style="position: absolute; top: 10px; font-style: italic; color: aliceblue;">General Recommendations</H1>
-<Div class="container"></Div>
+<Div class="container" id="results"></Div>
 <div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
     <a href="main.html" class="mainbtn">Main Button</a>
-    <button class="getbtn">Get Button</button>
+    <button class="getbtn" onclick="getRecommendations()">Get Button</button>
 </div>
 </body>
 </html>
