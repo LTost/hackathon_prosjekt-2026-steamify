@@ -23,13 +23,10 @@ Return the **top 10 recommended games**. For each game, include:
 
 Format the output clearly as numbered text, like this:
 
-1. Game Name — $Price (line break) 
-   Link: Steam_Link   (line break)
-2. Game Name — $Price  (line break)
-   Link: Steam_Link    (line break)
-…
-10. Game Name — $Price  (line break)
-    Link: Steam_Link   (line break)
+1.<a href="Steam_Link" target="_blank">Game name - $Price </a> (line break)  
+2. <a href="Steam_Link" target="_blank">Game name - $Price </a> (line break)
+... and so on for the top 10 games.
+10. <a href="Steam_Link" target="_blank">Game name - $Price </a> (line break)
 
 Do **not** include any extra explanation or text outside this format. 
 Do **not** include any games that the user already owns.
