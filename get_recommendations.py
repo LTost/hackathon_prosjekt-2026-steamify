@@ -8,7 +8,9 @@ def ask_chat(games):
         base_url="https://hackathonlite-production.up.railway.app"
     )
 
-    query = "Use this list of games to give 10 games that are similar. This list is a list of dictionaries, where the key is the name of the game, the first value is playtime forever and the second is rtime last played. Think about playtime and rtime last played when giving recommendations about other games. Here is the list: {games}"
+    client = OpenAI("INSER_KEY_HERE")
+    sorted_game_lib = dict(sorted(games.items(), key=lambda item: item[1])) 
+    query = "Use this list of games to give 10 games that are similar. This list is a list of dictionaries, where the key is the name of the game, the first value is playtime forever and the second is rtime last played. Think about playtime and rtime last played when giving recommendations about other games. Here is the list:" + str(sorted_game_lib)
 
     response = client.chat.completions.create(
         model="gemini-3-flash-preview",
