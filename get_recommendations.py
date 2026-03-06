@@ -8,7 +8,7 @@ def ask_chat(games):
         base_url="https://hackathonlite-production.up.railway.app"
     )
 
-    query = f"Use this list of games to give 10 games that are similar. This list is a list of dictionaries, where the key is the name of the game, the first value is playtime forever and the second is rtime last played. Think about playtime and rtime last played when giving recommendations about other games. Here is the list: {games}"
+    query = "Use this list of games to give 10 games that are similar. This list is a list of dictionaries, where the key is the name of the game, the first value is playtime forever and the second is rtime last played. Think about playtime and rtime last played when giving recommendations about other games. Here is the list: {games}"
 
     response = client.chat.completions.create(
         model="gemini-3-flash-preview",
