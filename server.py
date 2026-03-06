@@ -1,4 +1,4 @@
-from flask import Flask, send_file
+from flask import Flask, send_file, redirect
 
 app = Flask(__name__)
 
@@ -6,21 +6,25 @@ app = Flask(__name__)
 def home():
     return send_file("Main.html")
 
-@app.route("/Username input")
+@app.route("/Username-input")
 def login():
     return send_file("Username input.html")
 
-@app.route("/General")
+@app.route("/General-Recommendations")
 def general():
     return send_file("General.html")
 
-@app.route("/Specific")
+@app.route("/Specific-Recommendations")
 def specific():
     return send_file("Specific.html")
 
-@app.route("/How to")
+@app.route("/How-to")
 def howto():
     return send_file("Howto.html")
+
+@app.route("/")
+def root():
+    return redirect("/Main")
 
 @app.errorhandler(404)
 def page_not_found(e):
