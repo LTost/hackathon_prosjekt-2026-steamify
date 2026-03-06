@@ -3,31 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>General Recommendations</title>
- 
-    <script>
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const cookies = document.cookie.split(';');
-            for(let i = 0; i < cookies.length; i++) {
-                let cookie = cookies[i].trim();
-                if(cookie.indexOf(nameEQ) === 0) {
-                    return decodeURIComponent(cookie.substring(nameEQ.length));
-                }
-            }
-            return null;
-        }
- 
-        if(!getCookie("steamUsername")) {
-            window.location.href = "Username-input";
-        }
-       
-        </script>
- 
- 
-       
-   
- 
+    <title>Recommended Games</title>    
 </head>
 <body>
    
@@ -64,9 +40,9 @@
  
             box-shadow: 0 8px 64px rgba(21, 119, 199, 0.3);
  
-    }
+        }
  
-    .mainbtn {
+         .mainbtn {
  
             display: inline-block;
  
@@ -90,15 +66,15 @@
  
         }
  
-    .mainbtn:hover {
- 
-        background-color: #007396;
-        box-shadow: 0 4px 12px #009bca;
-        transform: scale(1.07);
+        .mainbtn:hover {
+    
+            background-color: #007396;
+            box-shadow: 0 4px 12px #009bca;
+            transform: scale(1.07);
  
         }
  
-    .getbtn {
+        .getbtn {
  
             display: inline-block;
  
@@ -122,19 +98,20 @@
  
         }
  
-    .getbtn:hover {
+        .getbtn:hover {
+    
+            background-color: #007396;
+            box-shadow: 0 4px 12px #009bca;
+            transform: scale(1.07);
  
-        background-color: #007396;
-        box-shadow: 0 4px 12px #009bca;
-        transform: scale(1.07);
- 
-            }
+        }
+
     </style>    
     <H1 style="position: absolute; top: 10px; font-style: italic; color: aliceblue;">General Recommendations</H1>
 <Div class="container" id="results"></Div>
 <div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
     <a href="main.html" class="mainbtn">Main Button</a>
-    <button class="getbtn" onclick="document.location='Recommended-Games'">Get Recommendations</button>
+    <p>Recommended Games: {{ games }}</p>
 </div>
 </body>
 </html>

@@ -12,13 +12,7 @@ def login():
 
 @app.route("/General-Recommendations")
 def general():
-    from get_recommendations import get_games, ask_chat
-    username = request.cookies.get("steamUsername")
-
-    games = get_games(username)
-    recommendations = ask_chat(games)
-
-    return render_template("General.html", recommendations)
+    return render_template("General.html")
 
 @app.route("/Specific-Recommendations")
 def specific():
@@ -31,6 +25,16 @@ def howto():
 @app.route("/")
 def root():
     return redirect("/Main")
+
+@app.route("/Recommended-Games")
+def recommend_games():
+    from get_recommendations import get_games, ask_chat
+
+    username = request.cookies.get("steamUsername")
+    games = get_games(username)
+    recommendations = ask_chat(games)
+
+    return render_template("Recommended games.html", games=recommendations)
 
 @app.errorhandler(404)
 def page_not_found(e):

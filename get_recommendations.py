@@ -13,7 +13,7 @@ def ask_chat(games):
         model="gemini-3-flash-preview",
         messages=[
             {"role": "assistant", "content": "Only list the names of the top 10 recommended games, prices and a link to the game in steam shop based on the data provided, also consider the games public rating on steam",
-            "role": "assistant", "content": "The format should be [[game1_name, game1_price, game1_link], [game2_name, game2_price, game2_link]...[game10_name, game10_price, game10_link]]",
+            "role": "assistant", "content": "The format should be [[game1_name, game1_price, game1_link], [game2_name, game2_price, game2_link]...[game10_name, game10_price, game10_link]] without any other text",
             "role": "user", "content": query}
         ]
     )
