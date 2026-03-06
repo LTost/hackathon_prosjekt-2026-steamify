@@ -23,18 +23,19 @@ Return the **top 10 recommended games**. For each game, include:
 
 Format the output clearly as numbered text, like this:
 
-1. Game Name — $Price  
-   Link: Steam_Link  
-2. Game Name — $Price  
-   Link: Steam_Link  
-…  
-10. Game Name — $Price  
-    Link: Steam_Link  
+1. Game Name — $Price (line break) 
+   Link: Steam_Link   (line break)
+2. Game Name — $Price  (line break)
+   Link: Steam_Link    (line break)
+…
+10. Game Name — $Price  (line break)
+    Link: Steam_Link   (line break)
 
 Do **not** include any extra explanation or text outside this format. 
 Do **not** include any games that the user already owns.
 Do **not** include any games that are not available on the Steam store.
-Do **not** use one compact list format. Use the numbered format as shown above for clarity.
+Do **not** use one compact list format. Use the numbered format as shown above for clarity. 
+Do **not** include any ting like Game recommendations: or similar. Just list the games as shown in the format above without any extra text.
 """
 
     response = client.chat.completions.create(
