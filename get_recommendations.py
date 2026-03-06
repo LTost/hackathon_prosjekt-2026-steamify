@@ -1,7 +1,7 @@
 from openai import OpenAI
 from steam_web_api import Steam
 
-def ask_chat(owned, recent):
+def ask_chat(games):
     client = OpenAI("INSER_KEY_HERE")
 
     query = "something"
@@ -22,16 +22,20 @@ def get_games(username):
     steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
 
     user_details = steam.users.search_user(username)
-    user_id = user_details["player"]["steam_id"]
+    user_id = user_details["player"]["steamid"]
 
     owned_games = steam.users.get_owned_games(user_id)
-    recent_games = steam.users.get_user_recently_played_games(user_id)
-
-    return owned_games, recent_games
+    game_info = []
+    
+    try:
+        for game in owned_games["games"]:
+            game_info.append({game["name"]: [game["playtime_forever"], game["rtime_last_played"]]})
+    except KeyError:
+        return "It seems you don't have any games installed. Please try some games to see what you like before we can give any recommendations"
+    
+    return game_info
 
 ### vi bør ha med pris og kanskje sorterings algoritme basert på rating og pris.
 #### steam Key: 511BA295CDA8349CA246EDD6AD5ACA27
 ### openai key: INSER_KEY_HERE
 ### all pip insalls required: pip install python-steam-api, pip install openai
-
-print("hello world")
