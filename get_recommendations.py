@@ -1,4 +1,3 @@
-import os
 from openai import OpenAI
 from steam_web_api import Steam
 
@@ -8,9 +7,7 @@ def ask_chat(games):
         base_url="https://hackathonlite-production.up.railway.app"
     )
 
-    client = OpenAI("INSER_KEY_HERE")
-    sorted_game_lib = dict(sorted(games.items(), key=lambda item: item[1])) 
-    query = "Use this list of games to give 10 games that are similar. This list is a list of dictionaries, where the key is the name of the game, the first value is playtime forever and the second is rtime last played. Think about playtime and rtime last played when giving recommendations about other games. Here is the list:" + str(sorted_game_lib)
+    query = f"Use this list of games to give 10 games that are similar. This list is a list of dictionaries, where the key is the name of the game, the first value is playtime forever in minutes and the second is rtime last played. Think about playtime and rtime last played when giving recommendations about other games. Here is the list: {games}"
 
     response = client.chat.completions.create(
         model="gemini-3-flash-preview",
@@ -24,7 +21,7 @@ def ask_chat(games):
     return response.choices[0].message.content
 
 def get_games(username):
-    steam = Steam(os.environ.get("511BA295CDA8349CA246EDD6AD5ACA27"))
+    steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
 
     user_details = steam.users.search_user(username)
     user_id = user_details["player"]["steamid"]
