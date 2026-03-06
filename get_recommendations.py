@@ -16,7 +16,7 @@ def ask_chat(games):
         ]
     )
 
-    return response[choices][0][message][content]
+    return response.choices[0].message.content
 
 def get_games(username):
     steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
