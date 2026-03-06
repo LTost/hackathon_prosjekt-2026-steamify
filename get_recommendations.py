@@ -1,3 +1,4 @@
+import os
 from openai import OpenAI
 from steam_web_api import Steam
 
@@ -21,7 +22,7 @@ def ask_chat(games):
     return response.choices[0].message.content
 
 def get_games(username):
-    steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
+    steam = Steam(os.environ.get("511BA295CDA8349CA246EDD6AD5ACA27"))
 
     user_details = steam.users.search_user(username)
     user_id = user_details["player"]["steamid"]
@@ -39,5 +40,5 @@ def get_games(username):
 
 ### vi bør ha med pris og kanskje sorterings algoritme basert på rating og pris.
 #### steam Key: 511BA295CDA8349CA246EDD6AD5ACA27
-### openai key: INSER_KEY_HERE
+### openai key: sk-CoEjC-ypfCaSob7S8dmSHA
 ### all pip insalls required: pip install python-steam-api, pip install openai
