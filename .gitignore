@@ -29,3 +29,12 @@ fp-info-cache
 # Exported BOM files
 *.xml
 *.csv
+
+# venv
+Include
+Lib
+Scripts
+pyvenv.cfg
+
+__pycache__
+__pycache__/
