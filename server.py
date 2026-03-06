@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect, request, jsonify
+from flask import Flask, render_template, redirect, request
+
 app = Flask(__name__)
 
 @app.route("/Main")
@@ -9,28 +10,26 @@ def home():
 def login():
     return render_template("Username input.html")
 
-@app.route("/general-recommendations")
+@app.route("/General-Recommendations")
 def general():
-    from get_recommendations import get_games, ask_chat
-
-    username = request.cookies.get("steamUsername")
-
-    games = get_games(username)
-    recommendations = ask_chat(games)
-
-    return jsonify(recommendations)
+     return render_template("General.html")
 
 @app.route("/Specific-Recommendations")
 def specific():
-    return render_template("Specific.html")
 
-@app.route("/How-to")
-def howto():
-    return render_template("Howto.html")
-
-@app.route("/")
+@@ -32,9 +26,19 @@
 def root():
     return redirect("/Main")
+
+@app.route("/Recommended-Games")
+def recommend_games():
+    from get_recommendations import get_games, ask_chat
+
+    username = request.cookies.get("steamUsername")
+    games = get_games(username)
+    recommendations = ask_chat(games)
+
+    return render_template("Recommended games.html", games=recommendations)
 
 @app.errorhandler(404)
 def page_not_found(e):
