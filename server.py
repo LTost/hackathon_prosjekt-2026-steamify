@@ -33,11 +33,12 @@ def recommend_games():
 
     username = request.cookies.get("steamUsername")
     games = get_games(username)
-    recommendations = ask_chat(games)
-    recommendations = html.unescape(recommendations)
-    print(recommendations)
-
-    return render_template("Recommended games.html", games=recommendations)
+    if games == False:
+        return render_template("Recommended games.html", games="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
+    else:
+        recommendations = ask_chat(games)
+        recommendations = html.unescape(recommendations)
+        return render_template("Recommended games.html", games=recommendations)
 
 @app.errorhandler(404)
 def page_not_found(e):

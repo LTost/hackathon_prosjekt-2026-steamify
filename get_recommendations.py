@@ -23,17 +23,17 @@ Return the **top 10 recommended games**. For each game, include:
 
 Format the output clearly as numbered text, like this:
 
-1. Game Name - $Price - year of release - <a href ="steam_link" target="_blank">Link</a> <br>(line break)
-2. Game Name - $Price - year of release - <a href ="steam_link" target="_blank">Link</a> <br>(line break)
+1. Game Name - $Price - year of release - <a href ="steam_link" target="_blank">Link</a> <br>
+2. Game Name - $Price - year of release - <a href ="steam_link" target="_blank">Link</a> <br>
 ...
-10. Game Name - $Price - year of release - [<a href = "steam_link" target="_blank">Link</a>] <br>(line break)
+10. Game Name - $Price - year of release - [<a href = "steam_link" target="_blank">Link</a>] <br>
 
 
 Do **not** include any extra explanation or text outside this format. 
 Do **not** include any games that the user already owns.
 Do **not** include any games that are not available on the Steam store.
 Do **not** use one compact list format. Use the numbered format as shown above for clarity. 
-Do **not** include any games that have a steep learning curve.
+
 
 """
 
@@ -59,10 +59,10 @@ def get_games(username):
     
     try:
         for game in owned_games["games"]:
-            game_info.append({game["name"]: [game["playtime_forever"], game["rtime_last_played"]]})
+            game_info.append({game["name"]: [game["playtime_forever"]], "achievements": game.get("IsteamUserStats/GetPlayerAcheivements", [])})
 
     except KeyError:
-        return "It seems you don't have any games installed. Please try some games to see what you like before we can give any recommendations"
+        return False
     
     return game_info
 
