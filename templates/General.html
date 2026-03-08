@@ -51,20 +51,31 @@
         }
  
         .container {
- 
             text-align: center;
- 
-            background-color: #171A21;
- 
-            height: 190px;
- 
-            padding: 200px;
- 
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px;
             border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #00a6d8;
+            font-size: 16px;
+            color: #fff;
+            height: auto;
+        }
+
+        .container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .container input:focus {
+            outline: none;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 32px rgba(216, 0, 0, 0.5);
+        }
+
  
-            box-shadow: 0 8px 64px rgba(21, 119, 199, 0.3);
- 
-    }
+    
  
     .mainbtn {
  
@@ -87,7 +98,7 @@
             cursor: pointer;
  
             transition: background-color 0.3s ease;
- 
+
         }
  
     .mainbtn:hover {
@@ -102,11 +113,11 @@
  
             display: inline-block;
  
-            padding: 12px 24px;
+            padding: 16px 28px;
  
-            margin: 10px;
+            margin: 12px;
  
-            font-size: 16px;
+            font-size: 20px;
  
             color: #fff;
  
@@ -130,11 +141,13 @@
  
             }
     </style>    
-    <H1 style="position: absolute; top: 10px; font-style: italic; color: aliceblue;">General Recommendations</H1>
-<Div class="container" id="results"></Div>
-<div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
-    <a href="\Main" class="mainbtn">Main Button</a>
-    <button class="getbtn"  onclick="document.getElementById('results').innerText = 'Loading...';  document.location='Recommended-Games'"  color: aliceblue;">Get Recommendations</button>
+    
+<div class="container" id="results" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;">
+    <h1 style="font-style: italic; color: aliceblue; margin: 0;">General Recommendations</h1>
+    <p style="margin: 0;">Click here to get your Recommendation:</p>
+    <button class="getbtn" onclick="document.getElementById('results').innerText = 'Loading...'; document.location='Recommended-Games'" style="color: aliceblue;">Get Recommendations</button>
+    <a href="\Main" class="mainbtn" style="color: aliceblue;">Main Button</a>
 </div>
+
 </body>
 </html>

@@ -33,7 +33,7 @@ Do **not** include any extra explanation or text outside this format.
 Do **not** include any games that the user already owns.
 Do **not** include any games that are not available on the Steam store.
 Do **not** use one compact list format. Use the numbered format as shown above for clarity. 
-
+Do **not** include any games that arent on the steam store.
 
 """
 
