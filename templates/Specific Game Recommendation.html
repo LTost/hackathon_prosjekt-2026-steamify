@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Games</title>    
+</head>
+<body>
+   
+    <style>
+ 
+        body {
+ 
+            font-family: Arial, sans-serif;
+ 
+            background: linear-gradient(150deg, #171A21 0%, #020d29e1 100%);
+ 
+            min-height: 100vh;
+ 
+            display: flex;
+ 
+            justify-content: center;
+ 
+            align-items: center;
+ 
+ 
+        }
+ 
+        .container {
+ 
+            text-align: center;
+ 
+            background-color: #171A21;
+ 
+            min-height: 190px;
+ 
+            padding: 40px;
+ 
+            border-radius: 10px;
+ 
+            box-shadow: 0 8px 64px rgba(21, 119, 199, 0.3);
+ 
+        }
+
+.mainbtn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #00a6d8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mainbtn:hover {
+    background-color: #007396;
+    box-shadow: 0 4px 12px #009bca;
+    transform: scale(1.07);
+}
+ 
+
+</style>
+        
+    
+    
+    <h1 style="position: absolute; top: 10px; font-style: italic; color: aliceblue;">Specific Recommendations</h1>
+
+    <div class="container" id="results" style="color: aliceblue;">
+        {{recommendations|safe}}
+    </div>
+
+    <a href="/Main" class="mainbtn" style="position: fixed; bottom: 1%;">Back to Main Page</a>
+    </div>
+</div>
+</body>
+</html>
+ 

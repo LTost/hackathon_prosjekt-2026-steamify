@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<heavd>
-    <vmeta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Specific Recommendations</title>
-
     <script>
         function getCookie(name) {
             const nameEQ = name + "=";
@@ -21,45 +20,147 @@
             window.location.href = "Username-input";
         }
     </script>
-
 </head>
 <body>
     <py-script src="./Hackaton.py" config="./pyscript.json"></py-script>
     
     <style>
-
         body {
-
             font-family: Arial, sans-serif;
-
             background: linear-gradient(150deg, #171A21 0%, #020d29e1 100%);
-
             min-height: 100vh;
-
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
-
+            margin: 0;
         }
 
         .container {
-
             text-align: center;
-
             background: rgba(0, 0, 0, 0.3);
-
-            padding: 50px;
-
+            padding: 40px;
             border-radius: 10px;
-
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #00a6d8;
+            font-size: 16px;
+            color: #fff;
         }
 
-    </style>
+        .container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
 
+        .container input:focus {
+            outline: none;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 166, 216, 0.5);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        input:focus {
+            border-color: #007396;
+            box-shadow: 0 0 10px #009bca;
+        }
+
+        .btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000;
+            background: #00a6d8;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px #009bca;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .mainbtn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #00a6d8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .mainbtn:hover {
+            background-color: #007396;
+            box-shadow: 0 4px 12px #009bca;
+            transform: scale(1.07);
+        }
+
+        h1 {
+            color: aliceblue;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function submitQuery() {
+            const specific_query = document.getElementById("queryInput").value.trim();
+        
+            if(specific_query === "") {
+                alert("Please enter a query!");
+                return;
+            }
+
+            const date = new Date();
+            date.setTime(date.getTime() + (60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = "specificQuery=" + encodeURIComponent(specific_query) + ";" + expires + ";path=/";
+        
+            window.location.href = "/Specific-Game-Recommendations";
+        }
+    </script>
+
+    <div class="container">
+        <h1>Specific Recommendations</h1>
+        <p style="color: aliceblue; font-size: 1.2rem;">Enter your specific query:</p>
+        <input type="text" id="queryInput" placeholder="Your query here">
+        <button class="btn" onclick="submitQuery(); document.getElementById('queryInput').innerText = 'Loading...';">Submit</button>
+        <div style="margin-top: 20px;">
+            <a href="/Main" class="mainbtn">Back to Main</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("queryInput").addEventListener("keypress", function(event) {
+            if(event.key === "Enter") {
+                submitQuery();
+            }
+        });
+    </script>
 </body>
 </html>

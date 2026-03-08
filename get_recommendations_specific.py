@@ -1,7 +1,7 @@
 from openai import OpenAI
 from steam_web_api import Steam
 
-def ask_chat(games):
+def specific_ask_chat(games, specific_query):
     client = OpenAI(
         api_key="sk-CoEjC-ypfCaSob7S8dmSHA",
         base_url="https://hackathonlite-production.up.railway.app"
@@ -9,8 +9,10 @@ def ask_chat(games):
 
     query = f"""
 You are a game recommendation assistant. Use the input list of games to recommend other games that are similar. 
-Consider total playtime (playtime_forever), the tags of the games the user likes, and the game's public Steam rating.
+Consider total playtime (playtime_forever), the tags of the games the user likes, and the game's public Steam rating and
+most importantly the user's query if the query includes a specific genre only recommend games from that genre.
 
+Here is the user's query: {specific_query} 
 Here is the user's games (list of dictionaries, where each key is the game name, and the value is [playtime_forever_in_minutes, rtime_last_played_in_minutes]):
 
 {games}
@@ -65,6 +67,7 @@ def get_games(username):
         return False
     
     return game_info
+
 
 ### vi bør ha med pris og kanskje sorterings algoritme basert på rating og pris.
 #### steam Key: 511BA295CDA8349CA246EDD6AD5ACA27
