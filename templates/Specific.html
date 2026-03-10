@@ -129,8 +129,8 @@
     </style>
     <script>
         function submitQuery() {
-            document.getElementById('results').innerText = 'Loading...';
             const specific_query = document.getElementById("queryInput").value.trim();
+            document.getElementById('results').innerText = 'Loading...';
         
             if(specific_query === "") {
                 alert("Please enter a query!");
