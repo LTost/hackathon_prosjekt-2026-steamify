@@ -34,7 +34,7 @@ def recommend_games():
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
-       return render_template("Recommended games.html", games="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
+       return render_template("Recommended games.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
     else:
         recommendations = ask_chat(games)
         recommendations = html.unescape(recommendations)
