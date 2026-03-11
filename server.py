@@ -41,19 +41,18 @@ def recommend_games():
 
     return render_template("Recommended games.html", recommendations=recommendations)
      
-@app.route("/Specific-Game-Recommendations")
+@app.route("/Specific-Game-Recommendations", methods=['POST'])
 def recommend_specific_games():
     from get_recommendations_specific import get_games, specific_ask_chat
-
+    
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
        return render_template("Specific Game Recommendation.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
     else:
-        specific_query = request.cookies.get("specific_query")
+        specific_query = request.form.get('query')
         recommendations = specific_ask_chat(games, specific_query)
         recommendations = html.unescape(recommendations)
-
     return render_template("Specific Game Recommendation.html", recommendations=recommendations)
 
 @app.errorhandler(404)

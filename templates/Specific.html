@@ -48,6 +48,20 @@
             color: #fff;
         }
 
+        .containerLoad {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #d80000;
+            font-size: 16px;
+            color: #fff;
+            display: none;
+        }
+
         .container input::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
@@ -127,41 +141,37 @@
             margin-bottom: 20px;
         }
     </style>
-    <script>
-        function submitQuery() {
-            const specific_query = document.getElementById("queryInput").value.trim();
-            document.getElementById('results').innerText = 'Loading...';
-        
-            if(specific_query === "") {
-                alert("Please enter a query!");
-                return;
-            }
 
-            const date = new Date();
-            date.setTime(date.getTime() + (60 * 60 * 1000));
-            const expires = "expires=" + date.toUTCString();
-            document.cookie = "specificQuery=" + encodeURIComponent(specific_query) + ";" + expires + ";path=/";
-        
-            window.location.href = "/Specific-Game-Recommendations";
+    
+    <script>
+    function entersubmit(Enter) {
+        if(event.keyCode == 13) {
+            document.forms.submitfrom.submit();
+            document.forms.submitfrom.fname.value = ""; 
         }
+    }
+    function showLoading() {
+        document.getElementById('results').style.display = 'none'; 
+        document.getElementById('loadingoverlay').style.display = 'flex';
+        document.getElementById('loadingoverlay').innerText = "Loading...";
+    }
     </script>
+
+    <div id="loadingoverlay" class="containerLoad" style="color: aliceblue; justify-content: center;"></div>
 
     <div class="container" id="results">
         <h1>Specific Recommendations</h1>
         <p style="color: aliceblue; font-size: 1.2rem;">Enter your specific query:</p>
-        <input type="text" id="queryInput" placeholder="Your query here">
-        <button class="btn" onclick="submitQuery();">Submit</button>
+        <div onclick="">
+            <form action="Specific-Game-Recommendations" method="POST" id="submitfrom" onsubmit="showLoading()">
+                <input type="text" name="query" placeholder="Your query here" required onkeydown="entersubmit(Enter)">
+                <input class="btn" type="submit" ></button>
+            </form>
+        </div>
         <div style="margin-top: 20px;">
             <a href="/Main" class="mainbtn">Back to Main</a>
         </div>
     </div>
 
-    <script>
-        document.getElementById("queryInput").addEventListener("keypress", function(event) {
-            if(event.key === "Enter") {
-                submitQuery();
-            }
-        });
-    </script>
 </body>
 </html>
