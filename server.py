@@ -2,6 +2,8 @@ from flask import Flask, render_template, redirect, request
 import html
 
 app = Flask(__name__)
+global recommendations 
+recommendations = ""
 
 @app.route("/Main")
 def home():
@@ -30,29 +32,37 @@ def root():
 @app.route("/Recommended-Games")
 def recommend_games():
     from get_recommendations import get_games, ask_chat
+    global recommendations
 
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
        return render_template("Recommended games.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
     else:
-        recommendations = ask_chat(games)
-        recommendations = html.unescape(recommendations)
+        if recommendations == "":
+            recommendations = ask_chat(games)
+            recommendations = html.unescape(recommendations)
+        else:
+            print("waster")
 
     return render_template("Recommended games.html", recommendations=recommendations)
      
 @app.route("/Specific-Game-Recommendations", methods=['POST'])
 def recommend_specific_games():
     from get_recommendations_specific import get_games, specific_ask_chat
-    
+    global recommendations
+
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
        return render_template("Specific Game Recommendation.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
     else:
-        specific_query = request.form.get('query')
-        recommendations = specific_ask_chat(games, specific_query)
-        recommendations = html.unescape(recommendations)
+        if recommendations == "":
+            specific_query = request.form.get('query')
+            recommendations = specific_ask_chat(games, specific_query)
+            recommendations = html.unescape(recommendations)
+        else:
+            print("waster")       
     return render_template("Specific Game Recommendation.html", recommendations=recommendations)
 
 @app.errorhandler(404)
