@@ -7,65 +7,40 @@ def specific_ask_chat(games, specific_query):
         base_url="https://hackathonlite-production.up.railway.app"
     )
 
-    query = fquery = f"""
-You are a Steam game recommendation assistant.
+    query = f"""
+You are a game recommendation assistant. Use the input list of games to recommend other games that are similar. 
+Consider total playtime (playtime_forever), the tags of the games the user likes, and the game's public Steam rating and
+most importantly the user's query if the query includes a specific genre only recommend games from that genre.
 
-Your task is to recommend games similar to the user's existing games and their search query.
-
-INPUTS
-------
-User query:
-{specific_query}
-
-User's owned games:
-Each item is a dictionary where:
-key = game name
-value = [playtime_forever_in_minutes, rtime_last_played_in_minutes]
+Here is the user's query: {specific_query} 
+Here is the user's games (list of dictionaries, where each key is the game name, and the value is [playtime_forever_in_minutes, rtime_last_played_in_minutes]):
 
 {games}
 
+Return the **top 10 recommended games**. For each game, include:
 
-RECOMMENDATION RULES
---------------------
-Use the following signals to determine similarity:
+1. Game name
+2. Price in USD
+3. Steam store link
 
-1. The user's query (MOST IMPORTANT)
-   - If the query specifies a genre (e.g., roguelike, FPS, RPG, strategy), ONLY recommend games from that genre.
+Format the output clearly as numbered text, like this:
 
-2. Playtime
-   - Games with higher playtime indicate stronger preference.
-
-3. Game tags / genres
-   - Recommend games with similar tags to the user's most played games.
-
-4. Steam ratings
-   - Prefer games with strong public Steam ratings.
-
-RESTRICTIONS
-------------
-- Recommend EXACTLY 10 games.
-- Do NOT recommend games the user already owns.
-- Only recommend games available on the Steam store.
-- Do NOT recommend games outside the requested genre if a genre is specified.
-- Do NOT include explanations, commentary, or markdown.
-- Do NOT output anything except the list.
+1. Game Name - $Price - year of release - <a href ="steam_link" target="_blank">Link</a> <br>
+2. Game Name - $Price - year of release - <a href ="steam_link" target="_blank">Link</a> <br>
+...
+10. Game Name - $Price - year of release - [<a href = "steam_link" target="_blank">Link</a>] <br>
 
 
-OUTPUT FORMAT
--------------
-Return the recommendations EXACTLY in the following numbered format:
+Do **not** include any extra explanation or text outside this format. 
+Do **not** include any games that the user already owns.
+Do **not** include any games that are not available on the Steam store.
+Do **not** use one compact list format. Use the numbered format as shown above for clarity. '
+Do  **not** include any games that do not fit the user's query if the query includes a specific genre.  
+Do **not** include any games that arent on the steam store.
+Make sure to double check the prices and thr link to the steam store
 
-1. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-2. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-3. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-4. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-5. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-6. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-7. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-8. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-9. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
-10. Game Name - $Price - Year of release - <a href="steam_link" target="_blank">Link</a> <br>
 """
+
     response = client.chat.completions.create(
         model="gemini-3-flash-preview",
         messages=[
