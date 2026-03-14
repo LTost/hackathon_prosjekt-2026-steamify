@@ -52,121 +52,167 @@
     
         }
 
-       h1 {
-    margin-bottom: 25px;
+        h1 {
+            margin-bottom: 25px;
 
-    font-weight: 600;
+            font-weight: 600;
 
-    color: #ffffff;
-}
+            color: #ffffff;
+        }
 
-input {
+        input {
 
-    width: 100%;
+            width: 100%;
 
-    padding: 12px 15px;
+            padding: 12px 15px;
 
-    font-size: 1rem;
+            font-size: 1rem;
 
-    border-radius: 8px;
+            border-radius: 8px;
 
-    border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
 
-    background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.08);
 
-    color: #fff;
+            color: #fff;
 
-    outline: none;
+            outline: none;
 
-    transition: 0.3s ease;
+            transition: 0.3s ease;
 
-}
+        }
 
-input::placeholder {
+        input::placeholder {
 
-    color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.6);
 
-}
+        }
 
-input:focus {
+        input:focus {
 
-    border-color: #2fe900;
+            border-color: #2fe900;
 
-    box-shadow: 0 0 10px rgba(47, 233, 0, 0.5);
+            box-shadow: 0 0 10px rgba(47, 233, 0, 0.5);
 
-}
+        }
 
-.btn {
+        .btn {
 
-    margin-top: 20px;
+            margin-top: 20px;
 
-    width: 100%;
+            width: 100%;
 
-    padding: 12px;
+            padding: 12px;
 
-    font-size: 1rem;
+            font-size: 1rem;
 
-    font-weight: 600;
+            font-weight: 600;
 
-    color: #000;
+            color: #000;
 
-    background: linear-gradient(90deg, #2fe900, #00c853);
+            background: linear-gradient(90deg, #2fe900, #00c853);
 
-    border: none;
+            border: none;
 
-    border-radius: 8px;
+            border-radius: 8px;
 
-    cursor: pointer;
+            cursor: pointer;
 
-    transition: all 0.3s ease;
-}
+            transition: all 0.3s ease;
+        }
 
-.btn:hover {
+        .btn:hover {
 
-    transform: translateY(-3px);
-    
-    box-shadow: 0 8px 20px rgba(47, 233, 0, 0.4);
-}
+            transform: translateY(-3px);
+            
+            box-shadow: 0 8px 20px rgba(47, 233, 0, 0.4);
+        }
 
-.btn:active {
-    transform: scale(0.98);
-}
+        .btn:active {
+            transform: scale(0.98);
+        }
 
-.btnidk {
-    margin-top: 20px;
+        .btnidk {
+            margin-top: 20px;
 
-    width: auto;
+            width: auto;
 
-    padding: 12px;
+            padding: 12px;
 
-    font-size: 1rem;
+            font-size: 1rem;
 
-    font-weight: 600;
+            font-weight: 600;
 
-    color: #000;
+            color: #000;
 
-    background-color: #00a6d8;
+            background-color: #00a6d8;
 
-    border: none;
+            border: none;
 
-    border-radius: 8px;
+            border-radius: 8px;
 
-    cursor: pointer;
+            cursor: pointer;
 
-    transition: all 0.3s ease;
+            transition: all 0.3s ease;
 
-}
+        }
 
-.btnidk:hover {
-    background-color: #007396;
-    box-shadow: 0 4px 12px #009bca;
-    transform: scale(1.07);
-}
+        .btnidk:hover {
+            background-color: #007396;
+            box-shadow: 0 4px 12px #009bca;
+            transform: scale(1.07);
+        }
+
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background:#171a21;
+            height:60px;
+            display:flex;
+            align-items:center;
+            padding:0 40px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.6);
+            z-index:1000;
+        }
+
+        .logo{
+            color:#66c0f4;
+            font-size:22px;
+            font-weight:bold;
+            letter-spacing:1px;
+        }
+
+        .nav-links{
+            margin-left:40px;
+            display:flex;
+            gap:25px;
+        }
+
+        .nav-links a{
+            color:#b8b6b4;
+            text-decoration:none;
+            font-size:14px;
+        }
+
+        .nav-links a:hover{
+            color:white;
+        }
 
 </style>
 </head>
 
 <body>
+
+<div class="navbar">
+    <div class="logo">Steamify</div>
+    <div class="nav-links">
+    <a href="/Main">Main</a>
+    <a href="https://store.steampowered.com" target="_blank">Open Steam</a>
+    <a href="/How-to" target="_self">How to change URL</a>
+    </div>
+</div>
 
 <div class="container">
     <h1>Enter Your Steam URL</h1>

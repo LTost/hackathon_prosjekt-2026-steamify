@@ -140,8 +140,53 @@
             font-size: 2rem;
             margin-bottom: 20px;
         }
+    
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background:#171a21;
+            height:60px;
+            display:flex;
+            align-items:center;
+            padding:0 40px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.6);
+            z-index:1000;
+        }
+
+        .logo{
+            color:#66c0f4;
+            font-size:22px;
+            font-weight:bold;
+            letter-spacing:1px;
+        }
+
+        .nav-links{
+            margin-left:40px;
+            display:flex;
+            gap:25px;
+        }
+
+        .nav-links a{
+            color:#b8b6b4;
+            text-decoration:none;
+            font-size:14px;
+        }
+
+        .nav-links a:hover{
+            color:white;
+        }
+
     </style>
 
+<div class="navbar">
+    <div class="logo">Steamify</div>
+    <div class="nav-links">
+    <a href="/Main">Main</a>
+    <a href="https://store.steampowered.com" target="_blank">Open Steam</a>
+    </div>
+</div>
     
     <script>
     function entersubmit(Enter) {

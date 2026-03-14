@@ -198,23 +198,73 @@
             transform: translateX(-50%) scale(1.07);
         }
 
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background:#171a21;
+            height:60px;
+            display:flex;
+            align-items:center;
+            padding:0 40px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.6);
+            z-index:1000;
+        }
+
+        .logo{
+            color:#66c0f4;
+            font-size:22px;
+            font-weight:bold;
+            letter-spacing:1px;
+        }
+
+        .nav-links{
+            margin-left:40px;
+            display:flex;
+            gap:25px;
+        }
+
+        .nav-links a{
+            color:#b8b6b4;
+            text-decoration:none;
+            font-size:14px;
+        }
+
+        .nav-links a:hover{
+            color:white;
+        }
+
+
        </style>
-    <div class="container">
-        <h1>Steam Game Recommendations</h1>
 
-        <p>Find your next favorite game</p>
-
-        <div class="button-group">
-
-            <button class="btn1-general" onclick="document.location='General-Recommendations'">General Recommendations</button>
-
-            <button class="btn2-general" onclick="document.location='Specific-Recommendations'">Specific Recommendations</button>
-
-            <button class="btn3-general" onclick="clearUsername()">Change URL</button>
-
-        </div>        
-
+<div class="navbar">
+    <div class="logo">Steamify</div>
+    <div class="nav-links">
+    <a href="/Main">Main</a>
+    <a href="https://store.steampowered.com" target="_blank">Open Steam</a>
+    <a href="Username-input" target="_self">Change URL</a>
+    <a href="/specific">specific (dev)</a>
+    <a href="/general">general (dev)</a>
     </div>
+</div>
+
+<div class="container">
+    <h1>Steam Game Recommendations</h1>
+
+    <p>Find your next favorite game</p>
+
+    <div class="button-group">
+
+        <button class="btn1-general" onclick="document.location='General-Recommendations'">General Recommendations</button>
+
+        <button class="btn2-general" onclick="document.location='Specific-Recommendations'">Specific Recommendations</button>
+
+        <button class="btn3-general" onclick="clearUsername()">Change URL</button>
+
+    </div>        
+
+</div>
 
 </body>
 </html>

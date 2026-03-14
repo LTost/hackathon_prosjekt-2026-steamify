@@ -22,6 +22,16 @@
             padding: 20px;
         }
 
+        .video{
+            margin-top:20px;
+            text-align:center;
+        }
+
+        iframe{
+            border-radius:6px;
+            box-shadow:0 6px 20px rgba(0,0,0,0.6);
+        }
+
         .container {
             text-align: center;
             background: rgba(0, 0, 0, 0.3);
@@ -69,37 +79,102 @@
             box-shadow: 0 4px 12px #009bca;
             transform: scale(1.07);
         }
+        
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background:#171a21;
+            height:60px;
+            display:flex;
+            align-items:center;
+            padding:0 40px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.6);
+            z-index:1000;
+        }
+
+        .logo{
+            color:#66c0f4;
+            font-size:22px;
+            font-weight:bold;
+            letter-spacing:1px;
+        }
+
+        .nav-links{
+            margin-left:40px;
+            display:flex;
+            gap:25px;
+        }
+
+        .nav-links a{
+            color:#b8b6b4;
+            text-decoration:none;
+            font-size:14px;
+        }
+
+        .nav-links a:hover{
+            color:white;
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Changing your Steam Custom URL and Game Details Privacy Via the Website/App</h2>
-        <ol>
-            <li>Head to the Steam website/app and log in.</li>
-            <li>Click on your display name on the top-right of the screen and then select "View Profile" from the dropdown menu.</li>
-            <li>On the right-hand side of the screen, underneath your level, click "Edit Profile".</li>
-            <li>In the Custom URL field, type out your desired URL.</li>
-            <li>Scroll down to the bottom of the page, and click "Save".</li>
-            <li>On the left side of your screen, click on "Privacy Settings" over the Steam Points Shop.</li>
-            <li>Under "My Profile", Game Details should be set to "Public"</li>
-            <h3><a href="https://youtu.be/f4ZJde-v0CU" target="_blank">Click here to view a tutorial</a></h3>
-        </ol>
 
-        <h2>Changing your Steam Custom URL and Game Details Privacy on your Phone</h2>
-        <ol>
-            <li>Click on your profile picture on the top-right of the screen and then select "View Profile" under your display name.</li>
-            <li>On top of your level, click "Edit Profile".</li>
-            <li>In the Custom URL field, type in your desired URL.</li>
-            <li>Scroll down to the bottom of your page and tap "Save".</li>
-            <li>Scroll up again, then on the scroll menu under your display name, scroll all the way to the right and click on "Privacy Settings".</li>
-            <li>Under "My Profile", Game Details should be set to "Public"</li>
-            <h3><a href="https://youtu.be/d7o-3th7Kds" target="_blank">Click here to view a tutorial</a></h3>
-        </ol>
+    <div class="navbar">
+        <div class="logo">Steamify</div>
+        <div class="nav-links">
+        <a href="/Main">Main</a>
+        <a href="https://store.steampowered.com" target="_blank">Open Steam</a>
+        <a href="Username-input" target="_self">Go Back</a>
+        </div>
     </div>
-    <div class="btn-container">
-        <a href="https://store.steampowered.com" target="_blank" class="btn">Open Steam website</a>
-        <a href="Username-input" target="_self" class="btn">Go Back</a>
-    </div>
+
+<div class="container">
+    <h2>Changing your Steam Custom URL and Game Details Privacy Via the Website/App</h2>
+    <ol>
+        <li>Head to the Steam website/app and log in.</li>
+        <!-- <img src="images/step1.png"> -->
+        <li>Click on your display name on the top-right of the screen and then select "View Profile" from the dropdown menu.</li>
+        <!-- <img src="images/step2.png"> -->
+        <li>On the right-hand side of the screen, underneath your level, click "Edit Profile".</li>
+        <!-- <img src="images/step3.png"> -->
+        <li>In the Custom URL field, type out your desired URL.</li>
+        <!-- <img src="images/step4.png"> -->
+        <li>Scroll down to the bottom of the page, and click "Save".</li>
+        <!-- <img src="images/step5.png"> -->
+        <li>On the left side of your screen, click on "Privacy Settings" over the Steam Points Shop.
+            Under "Privacy Settings", "Game Details" and "My profile" should be set to "Public"</li>
+        <!-- <img src="images/step6.png"> -->
+        <div class="video">
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/f4ZJde-v0CU"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </ol>
+
+    <h2>Changing your Steam Custom URL and Game Details Privacy on your Phone</h2>
+    <ol>
+        <li>Click on your profile picture on the top-right of the screen and then select "View Profile" under your display name.</li>
+        <li>On top of your screen, click "View Profile" button.</li>
+        <li>On top of your screen, click "Edit Profile" button.</li>
+        <li>In the Custom URL field, type in your desired URL.</li>
+        <li>Scroll down to the bottom of your page and tap "Save".</li>
+        <li>Scroll up again, then on the scroll menu under your display name, scroll all the way to the right and click on "Privacy Settings".</li>
+        <li>Under "Privacy Settings", "Game Details" and "My profile" should be set to "Public"</li>
+        <div class="video">
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/d7o-3th7Kds"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </ol>
+</div>
+<div class="btn-container">
+    <a href="https://store.steampowered.com" target="_blank" class="btn">Open Steam</a>
+    <a href="Username-input" target="_self" class="btn">Go Back</a>
+</div>
 </body>
 </html>
 

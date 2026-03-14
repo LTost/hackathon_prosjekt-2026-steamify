@@ -69,3 +69,11 @@ def recommend_specific_games():
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template("404.html"), 404
+
+@app.route('/specific')
+def gotospecific():
+    return render_template("Specific Game Recommendation.html")
+
+@app.route('/general')
+def gotogeneral():
+    return render_template("Recommended games.html")
