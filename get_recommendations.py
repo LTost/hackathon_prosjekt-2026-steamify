@@ -23,18 +23,20 @@ Return the **top 10 recommended games**. For each game, include:
 
 Format the output clearly as numbered text, like this:
 
-1. Game Name - $Price - year of release - <a href ="steam_link" target="_blank">Link</a> <br>
-2. Game Name - $Price - year of release - <a href ="steam_link" target="_blank">Link</a> <br>
+1. Game Name - $Price - year of release   <a href ="steam_link" target="_blank">Link</a>   thumbnail <br>
+2. Game Name - $Price - year of release   <a href ="steam_link" target="_blank">Link</a>   thumbnail <br>
 ...
-10. Game Name - $Price - year of release - [<a href = "steam_link" target="_blank">Link</a>] <br>
+10. Game Name - $Price - year of release   <a href ="steam_link" target="_blank">Link</a>   thumbnail <br>
 
 
 Do **not** include any extra explanation or text outside this format. 
 Do **not** include any games that the user already owns.
 Do **not** include any games that are not available on the Steam store.
 Do **not** use one compact list format. Use the numbered format as shown above for clarity. 
-Do **not** include any games that arent on the steam store.
+Do **not** include any games that arent on the steam store such as Tom Clancy's Ghost Recon Frontline. 
 Make sure to double check the prices and the link to the steam store
+Make sure to cross check the users games and their tags to find what they liked about the game and use this to recommend new games, so its not just alot of the same games again and again
+
 
 """
 

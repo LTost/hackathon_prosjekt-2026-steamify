@@ -4,167 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recommended Games</title>    
-</head>
-<body>
    
-    <style>
+<style>
  
-        body {
- 
-            font-family: Arial, sans-serif;
- 
-            background: linear-gradient(150deg, #171A21 0%, #020d29e1 100%);
- 
-            min-height: 100vh;
- 
-            display: flex;
- 
-            justify-content: center;
- 
-            align-items: center;
+    body {
 
-            text-align: left;
- 
- 
-        }
- 
-        .container {
- 
-            text-align: center;
- 
-            background-color: #171A21;
- 
-            min-height: 190px;
- 
-            padding: 40px;
- 
-            border-radius: 10px;
- 
-            box-shadow: 0 8px 64px rgba(21, 119, 199, 0.3);
+        font-family: Arial, sans-serif;
 
-            outline: #007396 2px;
- 
-        }
- 
-         .mainbtn {
- 
-            display: inline-block;
- 
-            padding: 12px 24px;
- 
-            margin: 10px;
- 
-            font-size: 16px;
- 
-            color: #fff;
- 
-            background-color: #00a6d8;
- 
-            border: none;
- 
-            border-radius: 5px;
- 
-            cursor: pointer;
- 
-            transition: background-color 0.3s ease;
- 
-        }
- 
-        .mainbtn:hover {
+        background: linear-gradient(150deg, #171A21 0%, #020d29e1 100%);
+
+        min-height: 100vh;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        text-align: left;
+
+
+    }
+
+    .container {
+
+        background-color: #171A21;
+
+        min-height: 190px;
+
+        padding: 40px;
+
+        border-radius: 10px;
+
+        box-shadow: 0 8px 64px rgba(21, 119, 199, 0.3);
+
+        outline: #007396 2px;
+        
+        color: aliceblue; 
+        
+        font-size: 18px; 
+        
+        text-align: left; 
+        
+        max-width: 80%; 
+        
+        display: flex; 
+        
+        flex-direction: column; 
     
-            background-color: #007396;
-            box-shadow: 0 4px 12px #009bca;
-            transform: scale(1.07);
- 
-        }
- 
-        .getbtn {
- 
-            display: inline-block;
- 
-            padding: 12px 24px;
- 
-            margin: 10px;
- 
-            font-size: 16px;
- 
-            color: #fff;
- 
-            background-color: #00a6d8;
- 
-            border: none;
- 
-            border-radius: 5px;
- 
-            cursor: pointer;
- 
-            transition: background-color 0.3s ease;
- 
-        }
- 
-        .getbtn:hover {
+
+    }
+
+        .mainbtn {
+
+        display: inline-block;
+
+        padding: 12px 24px;
+
+        margin: 10px;
+
+        font-size: 16px;
+
+        color: #fff;
+
+        background-color: #00a6d8;
+
+        border: none;
+
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        transition: background-color 0.3s ease;
+
+    }
+
+    .mainbtn:hover {
+
+        background-color: #007396;
+        box-shadow: 0 4px 12px #009bca;
+        transform: scale(1.07);
+
+    }
+
+    .getbtn {
+
+        display: inline-block;
+
+        padding: 12px 24px;
+
+        margin: 10px;
+
+        font-size: 16px;
+
+        color: #fff;
+
+        background-color: #00a6d8;
+
+        border: none;
+
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        transition: background-color 0.3s ease;
+
+    }
+
+    .getbtn:hover {
+
+        background-color: #007396;
+        box-shadow: 0 4px 12px #009bca;
+        transform: scale(1.07);
+
+    }
+
+    .navbar{
+        position: fixed;
+
+        top: 0;
+
+        left: 0;
+
+        width: 100%;
+
+        background:#171a21;
+
+        height:60px;
+
+        display:flex;
+
+        align-items:center;
+
+        padding:0 40px;
+
+        box-shadow:0 3px 10px rgba(0,0,0,0.6);
+
+        z-index:1000;
+    }
+
+    .logo{
+
+        color:#66c0f4;
+
+        font-size:22px;
+
+        font-weight:bold;
+
+        letter-spacing:1px;
+    }
+
+    .nav-links{
+        margin-left:40px;
+
+        display:flex;
+
+        gap:25px;
+    }
+
+    .nav-links a{
+        color:#b8b6b4;
+
+        text-decoration:none;
+
+        font-size:14px;
+    }
+
+    .nav-links a:hover{
+
+        color:white;
+    }
+
+    .recommendations-title{
+
+        color: aliceblue;
+
+        position:absolute; top: 50px; left: 50%; 
+
+        transform: translateX(-50%);
+    }
     
-            background-color: #007396;
-            box-shadow: 0 4px 12px #009bca;
-            transform: scale(1.07);
- 
-        }
-
-        .navbar{
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background:#171a21;
-            height:60px;
-            display:flex;
-            align-items:center;
-            padding:0 40px;
-            box-shadow:0 3px 10px rgba(0,0,0,0.6);
-            z-index:1000;
-        }
-
-        .logo{
-            color:#66c0f4;
-            font-size:22px;
-            font-weight:bold;
-            letter-spacing:1px;
-        }
-
-        .nav-links{
-            margin-left:40px;
-            display:flex;
-            gap:25px;
-        }
-
-        .nav-links a{
-            color:#b8b6b4;
-            text-decoration:none;
-            font-size:14px;
-        }
-
-        .nav-links a:hover{
-            color:white;
-        }
 
 </style>
+</head>
         
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+
 <div class="navbar">
     <div class="logo">Steamify</div>
     <div class="nav-links">
-    <a href="/Main">Main</a>
-    <a href="https://store.steampowered.com" target="_blank">Open Steam</a>
+        <a href="/Main">Main</a>
+        <a href="https://store.steampowered.com" target="_blank">Open Steam</a>
+        <a href="/About">About</a>
     </div>
 </div>
 
-    <h1 class="recommendations-title" style="color: aliceblue; position:absolute; top: 40px; left: 50%; transform: translateX(-50%);">General Recommendations</h1>
-<div class="container" id="results" style="color: aliceblue; font-size: 18px; text-align: left; max-width: 30%; display: flex; flex-direction: column;">
-    {{recommendations|safe}}
-    <div style="margin-top: auto; display: flex; justify-content: center;">
-        <a href="/Main" class="mainbtn" style="margin-bottom: 0;">Back to Main Page</a>
+<h1 class="recommendations-title">General Recommendations</h1>
+
+<div style="padding: 10%; flex: 1; margin-top: 40px;">
+    <div class="container" id="results">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+            {{recommendations|safe}}
+        </div>
+        <div style="margin-top: 20px; display: flex; justify-content: center;">
+            <a href="/Main" class="mainbtn">Back to Main Page</a>
+        </div>
     </div>
 </div>
-<div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
+
+<div style="display: flex; justify-content: center; padding: 20px;">
     <div style="display: flex; flex-direction: column; align-items: center;">
         <h3 style="color: aliceblue; margin-bottom: 10px;">Did you like your recommendations?</h3>
         <div style="display: flex; gap: 10px;">
@@ -173,7 +221,7 @@
         </div>
     </div>
 </div>
-    
+
 
 <script>
 const webhookURL = "https://discord.com/api/webhooks/1482338941662134406/wkOY8ktYf0sZXjrCLpGTn2pgFLkddSROPwqBzp3Btd5K6LqAEeCkiPK4o5J1yEeKT0nw";
@@ -204,4 +252,3 @@ document.getElementById("dislikeBtn").addEventListener("click", () => sendToDisc
 
 </body>
 </html>
- 

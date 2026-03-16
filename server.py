@@ -30,11 +30,14 @@ def howto():
 def root():
     return redirect("/Main")
 
+@app.route("/Description")
+def Description():
+    return render_template("Description.html")
+
 @app.route("/Recommended-Games")
 def recommend_games():
     from get_recommendations import get_games, ask_chat
     global recommendations
-
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
@@ -70,6 +73,11 @@ def recommend_specific_games():
 def page_not_found(error):
     return render_template("404.html"), 404
 
+""""temporrary solution to avoid using up all the api calls, will be replaced with a database in the future, also makes it so the user can refresh the page without getting a new recommendation every time"""
+@app.route('/about')
+def about():
+    return render_template("About.html")
+
 @app.route('/specific')
 def gotospecific():
     return render_template("Specific Game Recommendation.html")
@@ -77,3 +85,4 @@ def gotospecific():
 @app.route('/general')
 def gotogeneral():
     return render_template("Recommended games.html")
+
