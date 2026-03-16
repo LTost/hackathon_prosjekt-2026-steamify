@@ -5,6 +5,7 @@ app = Flask(__name__)
 global recommendations 
 recommendations = ""
 recommendations_specific =""
+queryold = ""
 
 @app.route("/Main")
 def home():
@@ -49,27 +50,28 @@ def recommend_games():
         else:
             print("waster")
 
-    print(recommendations)
     return render_template("Recommended games.html", recommendations=recommendations)
      
 @app.route("/Specific-Game-Recommendations", methods=['POST'])
 def recommend_specific_games():
     from get_recommendations_specific import get_games, specific_ask_chat
     global recommendations_specific
+    global queryold
 
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
        return render_template("Specific Game Recommendation.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
     else:
-        if recommendations_specific == "":
+        
+        if queryold != request.form.get('query'):
+            queryold = request.form.get('query')
             specific_query = request.form.get('query')
             recommendations_specific = specific_ask_chat(games, specific_query)
             recommendations_specific = html.unescape(recommendations_specific)
         else:
             print("waster")     
 
-    print(recommendations_specific)  
     return render_template("Specific Game Recommendation.html", recommendations_specific=recommendations_specific)
 
 @app.errorhandler(404)
