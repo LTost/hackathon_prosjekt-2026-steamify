@@ -49,6 +49,7 @@ def recommend_games():
         else:
             print("waster")
 
+    print(recommendations)
     return render_template("Recommended games.html", recommendations=recommendations)
      
 @app.route("/Specific-Game-Recommendations", methods=['POST'])
@@ -66,7 +67,9 @@ def recommend_specific_games():
             recommendations_specific = specific_ask_chat(games, specific_query)
             recommendations_specific = html.unescape(recommendations_specific)
         else:
-            print("waster")       
+            print("waster")     
+
+    print(recommendations_specific)  
     return render_template("Specific Game Recommendation.html", recommendations_specific=recommendations_specific)
 
 @app.errorhandler(404)
