@@ -42,13 +42,10 @@ def recommend_games():
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
-       return render_template("Recommended games.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
+        return render_template("Recommended games.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
     else:
-        if recommendations == "":
-            recommendations = ask_chat(games)
-            recommendations = html.unescape(recommendations)
-        else:
-            print("waster")
+        recommendations = ask_chat(games)
+        recommendations = html.unescape(recommendations)
 
     return render_template("Recommended games.html", recommendations=recommendations)
      
@@ -61,16 +58,12 @@ def recommend_specific_games():
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
-       return render_template("Specific Game Recommendation.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
+        return render_template("Specific Game Recommendation.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
     else:
         
-        if queryold != request.form.get('query'):
-            queryold = request.form.get('query')
-            specific_query = request.form.get('query')
-            recommendations_specific = specific_ask_chat(games, specific_query)
-            recommendations_specific = html.unescape(recommendations_specific)
-        else:
-            print("waster")     
+        specific_query = request.form.get('query')
+        recommendations_specific = specific_ask_chat(games, specific_query)
+        recommendations_specific = html.unescape(recommendations_specific)
 
     return render_template("Specific Game Recommendation.html", recommendations_specific=recommendations_specific)
 
@@ -90,4 +83,7 @@ def gotospecific():
 @app.route('/general')
 def gotogeneral():
     return render_template("Recommended games.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
 
