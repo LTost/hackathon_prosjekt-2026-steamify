@@ -3,7 +3,7 @@ from steam_web_api import Steam
 
 def ask_chat(games):
     client = OpenAI(
-        api_key="sk-CoEjC-ypfCaSob7S8dmSHA",
+        api_key="AI-api-key-goes-here",
         base_url="https://hackathonlite-production.up.railway.app"
     )
 
@@ -53,7 +53,7 @@ Make sure to cross check the users games and their tags to find what they liked 
     return response.choices[0].message.content
 
 def get_games(username):
-    steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
+    steam = Steam("api key goes here")
 
     print(username)
 

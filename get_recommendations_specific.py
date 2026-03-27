@@ -3,7 +3,7 @@ from steam_web_api import Steam
 
 def specific_ask_chat(games, specific_query):
     client = OpenAI(
-        api_key="sk-CoEjC-ypfCaSob7S8dmSHA",
+        api_key="AI-api-key-goes-here",
         base_url="https://hackathonlite-production.up.railway.app"
     )
 
@@ -56,7 +56,7 @@ Make sure to cross check the users games and their tags to find what they liked 
     return response.choices[0].message.content
 
 def get_games(username):
-    steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
+    steam = Steam("api key goes here")
 
     if "https%3A%2F%2Fsteamcommunity.com%2Fid%2F" in username:
         username = username.split("https%3A%2F%2Fsteamcommunity.com%2Fid%2F")[1]
@@ -81,6 +81,6 @@ def get_games(username):
 
 
 ### vi bør ha med pris og kanskje sorterings algoritme basert på rating og pris.
-#### steam Key: 511BA295CDA8349CA246EDD6AD5ACA27
-### openai key: sk-CoEjC-ypfCaSob7S8dmSHA
+#### steam Key: api key goes here
+### openai key: AI-api-key-goes-here
 ### all pip insalls required: pip install python-steam-api, pip install openai
