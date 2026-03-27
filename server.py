@@ -42,7 +42,7 @@ def recommend_games():
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
-        return render_template("Recommended games.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
+        return render_template("Recommended games.html", recommendations="It seems you don't own any games or your profile is private. Please try some games to see what you like before we can give any recommendations")    
     else:
         recommendations = ask_chat(games)
         recommendations = html.unescape(recommendations)
@@ -58,7 +58,7 @@ def recommend_specific_games():
     username = request.cookies.get("steamUsername")
     games = get_games(username)
     if games == False:
-        return render_template("Specific Game Recommendation.html", recommendations="It seems you don't own any games. Please try some games to see what you like before we can give any recommendations")    
+        return render_template("Specific Game Recommendation.html", recommendations="It seems you don't own any games or your profile is private. Please try some games to see what you like before we can give any recommendations")    
     else:
         
         specific_query = request.form.get('query')
