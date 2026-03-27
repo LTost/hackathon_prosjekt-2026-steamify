@@ -58,6 +58,12 @@ Make sure to cross check the users games and their tags to find what they liked 
 def get_games(username):
     steam = Steam("511BA295CDA8349CA246EDD6AD5ACA27")
 
+    if "https%3A%2F%2Fsteamcommunity.com%2Fid%2F" in username:
+        username = username.split("https%3A%2F%2Fsteamcommunity.com%2Fid%2F")[1]
+        print(username)
+        if "%2F" in username:
+            username = username[:-3]
+
     user_details = steam.users.search_user(username)
     user_id = user_details["player"]["steamid"]
 
